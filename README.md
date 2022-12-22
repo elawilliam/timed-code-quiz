@@ -1,1 +1,1 @@
-# timed-code-quiz
+# Timed JavaScript Quiz
