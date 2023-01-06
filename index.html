@@ -4,39 +4,44 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=".assets/css/style.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=".assets/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
 <body>
-    <!--Header-->
     <header>
-        <h1>Timed JavaScript Quiz</h1>
-    </header>
 
-    <!--Clock-->
-    <li id="clock">Time:<span id="time"></span></li>
+        <!-- Header -->
+        <div class="text-center bg-gray-50 text-gray-800 py-20 px-6">
+            <h1 class="text-5xl font-bold mt-0 mb-6">Timed JavaScript Quiz</h1>
 
-    <!--Quiz with Start Button-->
-    <div class="quiz card">
-        <li><button>START</button></li>
-    </div>
+            <!--Start Button-->
+            <button
+                class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded">
+                START
+            </button>
 
-    <!--High Scores with Button-->
-    <div class="high scores">
-        <li><a href="./assets/html/high-scores.html">
-    </div>High Scores</li>
-    </div>
+            <!--Clock-->
+            <div id="clock">Time:<span div="time"></span></div>
 
+            <!--High Scores with Button-->
+            <div class="high scores">
+                <a href="./assets/html/high-scores.html">High Scores</a>
+            </div>
+        </div>
 
-    <script src="./assets/js/script.js"></script>
+        <div class="quiz-card">
+            <h2>You have 60 seconds to complete 6 questions</h2>
+            <h2>Each incorrect answer will deduct 10 seconds from the clock</h2>
+            <h2>Please select START when you're ready</h2>
+        </div>
+
+        <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
