@@ -7,7 +7,7 @@ body {
     text-align: center;
 }
 
-.quiz-card {
+.question-box {
     flex: 1 0 200px;
     padding: 20px;
     text-align: center;

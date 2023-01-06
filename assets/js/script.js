@@ -1,16 +1,9 @@
-//Questions//
+var quizCard = document.getElementById("quiz-card");
+var startBtn = document.getElementById("start")
 
-var questions = {
-    "Question 1",
-    "Question 2",
-    "Question 3",
-    "Question 4",
-    "Question 5",
-    "Question 6"
-}
 
 //Creating the 'time' variable//
-var time = document.getElementById("time");
+var time = document.getElementById("clock");
 time.textContent = "00";
 var secondsLeft = 60;
 
@@ -30,7 +23,6 @@ function startClock() {
             quizEnd();
         }
     }, 1000);
-    //might need to change this number//
 }
 
 //Function to end quiz//
@@ -46,7 +38,7 @@ function questionFour()
 function questionFive()
 function questionSix()
 
-//Function for start quiz//
+//Function to start quiz//
 function startQuiz() {
     startClock();
     questionOne();
