@@ -7,10 +7,14 @@ body {
     text-align: center;
 }
 
-.question-box {
+#intro-card {
     flex: 1 0 200px;
     padding: 20px;
     text-align: center;
-    border-style: solid;
-    border-width: 10px;
+}
+
+#questions-card {
+    flex: 1 0 200px;
+    padding: 20px;
+    text-align: center;
 }
