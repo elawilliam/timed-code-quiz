@@ -2,35 +2,16 @@
 var introCard = document.getElementById("intro-card");
 var questionsCard = document.getElementById("questions-card");
 
-//Questions array//
-var questions = [
-    "Special characters are their own JavaScript data type",
-    "Local Variables are accessible everywhere in JavaScript code",
-    "Boolean data types in JavaScrip are True/False",
-    "pop() removes the last item in an array",
-    "JavaScript is not a case-sensitive language",
-    "When a function is declared as const, it can be called on any type of object"
-];
-
-//Correct answers array//
-var correctAnswersArray = [
-    "False",
-    "False",
-    "True",
-    "True",
-    "False",
-    "True"
-];
-
-//Incorrect answers array//
-var incorrectAnswersArray = [
-    "True",
-    "True",
-    "False",
-    "False",
-    "True",
-    "False"
+//Questions & Answers array//
+var questionsAndAnswers = [
+    { name: "Special characters are their own JavaScript data type", answer: "False" },
+    { name: "Local Variables are accessible everywhere in JavaScript code", answer: "False" },
+    { name: "Boolean data types in JavaScrip are True/False", answer: "True" },
+    { name: "pop() removes the last item in an array", answer: "True" },
+    { name: "JavaScript is not a case-sensitive language", answer: "False" },
+    { name: "When a function is declared as const, it can be called on any type of object", answer: "True" },
 ]
+
 
 //Creating True & False buttons//
 var trueBtn = document.createElement("button");
@@ -49,24 +30,24 @@ time.textContent = "00";
 
 //User given 60 seconds to complete quiz//
 var secondsLeft = 61;
- 
+
 //Function to start clock//
 function startClock() {
-   var timer = setInterval(function () {
-       secondsLeft--;
-       time.textContent = secondsLeft;
- 
-       if (secondsLeft === 61) {
-           clearInterval(timer);
-           time.textContent = " 00";
-       }
- 
-       if (secondsLeft === 0) {
-           clearInterval(timer);
-           time.textContent = "Quiz Over!"
-           quizEnd();
-       }
-   }, 1000);
+    var timer = setInterval(function () {
+        secondsLeft--;
+        time.textContent = secondsLeft;
+
+        if (secondsLeft === 61) {
+            clearInterval(timer);
+            time.textContent = " 00";
+        }
+
+        if (secondsLeft === 0) {
+            clearInterval(timer);
+            time.textContent = "Quiz Over!"
+            quizEnd();
+        }
+    }, 1000);
 }
 
 
@@ -96,17 +77,17 @@ function quizEnd() {
     }
 
 }
- 
+
 //Correct answers function//
-function correctAnswers(){
+function correctAnswers() {
     trueBtn.removeEventListener("click", correctAnswers);
     trueBtn.removeEventListener("click", incorrectAnswers);
     falseBtn.removeEventListener("click", correctAnswers);
     falseBtn.removeEventListener("click", incorrectAnswers);
 }
- 
+
 //Incorrect answers function//
-function incorrectAnswers(){
+function incorrectAnswers() {
     secondsLeft -= 10;
     trueBtn.removeEventListener("click", correctAnswers);
     trueBtn.removeEventListener("click", incorrectAnswers);
@@ -115,14 +96,14 @@ function incorrectAnswers(){
 }
 
 //Function to set up Q format//
-function askQuestion(){
+function askQuestion() {
     introCard.textContent = ""
     introCard.appendChild(trueBtn);
     introCard.appendChild(falseBtn);
 }
 
 //Function for each question//
-function questionSix(){
+function questionSix() {
     var beginQ = askQuestion();
     beginQ;
     questionsCard.textContent = questions[5];
@@ -132,7 +113,7 @@ function questionSix(){
     falseBtn.addEventListener("click", quizEnd);
 }
 
-function questionFive(){
+function questionFive() {
     var beginQ = askQuestion();
     beginQ;
     questionsCard.textContent = questions[4];
@@ -142,7 +123,7 @@ function questionFive(){
     falseBtn.addEventListener("click", questionSix);
 }
 
-function questionFour(){
+function questionFour() {
     var beginQ = askQuestion();
     beginQ;
     questionsCard.textContent = questions[3];
@@ -152,7 +133,7 @@ function questionFour(){
     falseBtn.addEventListener("click", questionFive);
 }
 
-function questionThree(){
+function questionThree() {
     var beginQ = askQuestion();
     beginQ;
     questionsCard.textContent = questions[2];
@@ -162,7 +143,7 @@ function questionThree(){
     falseBtn.addEventListener("click", questionFour);
 }
 
-function questionTwo(){
+function questionTwo() {
     var beginQ = askQuestion();
     beginQ;
     questionsCard.textContent = questions[1];
@@ -172,20 +153,22 @@ function questionTwo(){
     falseBtn.addEventListener("click", questionThree);
 }
 
-function questionOne(){
+function questionOne() {
     var beginQ = askQuestion();
     beginQ;
     questionsCard.textContent = questions[0];
-    trueBtn.addEventListener("click", correctAnswers[0]);
+    trueBtn.addEventListener("click", correctAnswersArray[0]);
     trueBtn.addEventListener("click", questionTwo);
     falseBtn.addEventListener("click", incorrectAnswers[0]);
     falseBtn.addEventListener("click", questionTwo);
+    console.log("question one")
 }
 
 //Function to start quiz//
-function startQuiz(){
+function startQuiz() {
     startClock();
-    questionOne();}
+    questionOne();
+}
 
 //Event listener for starting quiz// 
 startBtn.addEventListener("click", startQuiz);
