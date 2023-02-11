@@ -4,12 +4,12 @@ var questionsCard = document.getElementById("questions-card");
 
 //Questions & Answers array//
 var questionsAndAnswers = [
-    { name: "Special characters are their own JavaScript data type", answer: "False" },
-    { name: "Local Variables are accessible everywhere in JavaScript code", answer: "False" },
-    { name: "Boolean data types in JavaScrip are True/False", answer: "True" },
-    { name: "pop() removes the last item in an array", answer: "True" },
-    { name: "JavaScript is not a case-sensitive language", answer: "False" },
-    { name: "When a function is declared as const, it can be called on any type of object", answer: "True" },
+    { question: "Special characters are their own JavaScript data type", answer: "False" },
+    { question: "Local Variables are accessible everywhere in JavaScript code", answer: "False" },
+    { question: "Boolean data types in JavaScrip are True/False", answer: "True" },
+    { question: "pop() removes the last item in an array", answer: "True" },
+    { question: "JavaScript is not a case-sensitive language", answer: "False" },
+    { question: "When a function is declared as const, it can be called on any type of object", answer: "True" },
 ]
 
 
@@ -50,7 +50,6 @@ function startClock() {
     }, 1000);
 }
 
-
 //Function to end quiz//
 function quizEnd() {
     var timeLeft = secondsLeft;
@@ -78,96 +77,28 @@ function quizEnd() {
 
 }
 
-//Correct answers function//
-function correctAnswers() {
-    trueBtn.removeEventListener("click", correctAnswers);
-    trueBtn.removeEventListener("click", incorrectAnswers);
-    falseBtn.removeEventListener("click", correctAnswers);
-    falseBtn.removeEventListener("click", incorrectAnswers);
-}
-
-//Incorrect answers function//
-function incorrectAnswers() {
-    secondsLeft -= 10;
-    trueBtn.removeEventListener("click", correctAnswers);
-    trueBtn.removeEventListener("click", incorrectAnswers);
-    falseBtn.removeEventListener("click", correctAnswers);
-    falseBtn.removeEventListener("click", incorrectAnswers);
-}
-
 //Function to set up Q format//
-function askQuestion() {
+function renderQ() {
     introCard.textContent = ""
     introCard.appendChild(trueBtn);
     introCard.appendChild(falseBtn);
 }
 
-//Function for each question//
-function questionSix() {
-    var beginQ = askQuestion();
-    beginQ;
-    questionsCard.textContent = questions[5];
-    trueBtn.addEventListener("click", correctAnswers[5]);
-    trueBtn.addEventListener("click", quizEnd);
-    falseBtn.addEventListener("click", incorrectAnswers[5]);
-    falseBtn.addEventListener("click", quizEnd);
+//For loop to run through questions//
+function askQ() {
+    var beginQ = renderQ();
+    for (let i = 0; i < questionsAndAnswers.length; i++) {
+       questionsCard.textContent += questionsAndAnswers[i];
+    }
 }
-
-function questionFive() {
-    var beginQ = askQuestion();
-    beginQ;
-    questionsCard.textContent = questions[4];
-    trueBtn.addEventListener("click", correctAnswers[4]);
-    trueBtn.addEventListener("click", questionSix);
-    falseBtn.addEventListener("click", incorrectAnswers[4]);
-    falseBtn.addEventListener("click", questionSix);
-}
-
-function questionFour() {
-    var beginQ = askQuestion();
-    beginQ;
-    questionsCard.textContent = questions[3];
-    trueBtn.addEventListener("click", correctAnswers[3]);
-    trueBtn.addEventListener("click", questionFive);
-    falseBtn.addEventListener("click", incorrectAnswers[3]);
-    falseBtn.addEventListener("click", questionFive);
-}
-
-function questionThree() {
-    var beginQ = askQuestion();
-    beginQ;
-    questionsCard.textContent = questions[2];
-    trueBtn.addEventListener("click", correctAnswers[2]);
-    trueBtn.addEventListener("click", questionFour);
-    falseBtn.addEventListener("click", incorrectAnswers[2]);
-    falseBtn.addEventListener("click", questionFour);
-}
-
-function questionTwo() {
-    var beginQ = askQuestion();
-    beginQ;
-    questionsCard.textContent = questions[1];
-    trueBtn.addEventListener("click", correctAnswers[1]);
-    trueBtn.addEventListener("click", questionThree);
-    falseBtn.addEventListener("click", incorrectAnswers[1]);
-    falseBtn.addEventListener("click", questionThree);
-}
-
-function questionOne() {
-    var beginQ = askQuestion();
-    beginQ;
-    questionsCard.textContent = questions[0];
-    trueBtn.addEventListener("click", correctAnswersArray[0]);
-    trueBtn.addEventListener("click", questionTwo);
-    falseBtn.addEventListener("click", incorrectAnswers[0]);
-    falseBtn.addEventListener("click", questionTwo);
-    console.log("question one")
-}
+// trueBtn.addEventListener("click", questionsAndAnswers.answer[0]);
+// falseBtn.addEventListener("click", questionsAndAnswers.answer[0]);
+console.log(questionsAndAnswers);
 
 //Function to start quiz//
 function startQuiz() {
     startClock();
-    questionOne();
+    askQ();
 }
 
 //Event listener for starting quiz// 
