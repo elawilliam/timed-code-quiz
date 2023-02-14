@@ -4,12 +4,12 @@ var questionsCard = document.getElementById("questions-card");
 
 //Questions & Answers array//
 var questionsAndAnswers = [
-    { question: "Special characters are their own JavaScript data type", answer: "False" },
-    { question: "Local Variables are accessible everywhere in JavaScript code", answer: "False" },
-    { question: "Boolean data types in JavaScrip are True/False", answer: "True" },
-    { question: "pop() removes the last item in an array", answer: "True" },
-    { question: "JavaScript is not a case-sensitive language", answer: "False" },
-    { question: "When a function is declared as const, it can be called on any type of object", answer: "True" },
+    { question: "Special characters are their own JavaScript data type", answer: false },
+    { question: "Local Variables are accessible everywhere in JavaScript code", answer: false },
+    { question: "Boolean data types in JavaScrip are True/false", answer: true },
+    { question: "pop() removes the last item in an array", answer: true },
+    { question: "JavaScript is not a case-sensitive language", answer: false },
+    { question: "When a function is declared as const, it can be called on any type of object", answer: true },
 ]
 
 
@@ -20,6 +20,8 @@ trueBtn.textContent = "True"
 falseBtn.textContent = "False"
 trueBtn.setAttribute("style", "width:100px; margin:50px; border-radius: 20px; background-color: gray; cursor:pointer")
 falseBtn.setAttribute("style", "width:100px; margin:50px; border-radius: 20px; background-color: gray; cursor:pointer")
+trueBtn.setAttribute("data-answer", "true")
+falseBtn.setAttribute("data-answer", "false")
 
 //Start button//
 var startBtn = document.querySelector("#start");
@@ -77,21 +79,29 @@ function quizEnd() {
 
 }
 
-//Function to set up Q format//
+//Function to render Q & set up format//
 function renderQ() {
     introCard.textContent = ""
     introCard.appendChild(trueBtn);
     introCard.appendChild(falseBtn);
 }
 
-//For loop to run through questions//
+//For loop to run through & ask questions//
 function askQ() {
-    var beginQ = renderQ();
-    for (let i = 0; i < questionsAndAnswers.length; i++) {
-       questionsCard.textContent += questionsAndAnswers[i];
-    }
+    renderQ();
+    for (var i = 0; i < questionsAndAnswers.length; i++){
+        questionsCard.textContent = questionsAndAnswers[i].question;
+    };
+
 }
-// trueBtn.addEventListener("click", questionsAndAnswers.answer[0]);
+
+
+//check for the correct answer//
+function valueCheck (event){
+    console.log(event);
+}
+
+trueBtn.addEventListener("click", valueCheck());
 // falseBtn.addEventListener("click", questionsAndAnswers.answer[0]);
 console.log(questionsAndAnswers);
 
