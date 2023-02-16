@@ -7,7 +7,7 @@ var qIndex = 0
 var questionsAndAnswers = [
     { question: "Special characters are their own JavaScript data type", answer: "false" },
     { question: "Local Variables are accessible everywhere in JavaScript code", answer: "false" },
-    { question: "Boolean data types in JavaScrip are True/false", answer: "true" },
+    { question: "Boolean data types in JavaScrip are True/False", answer: "true" },
     { question: "pop() removes the last item in an array", answer: "true" },
     { question: "JavaScript is not a case-sensitive language", answer: "false" },
     { question: "When a function is declared as const, it can be called on any type of object", answer: "true" },
@@ -65,18 +65,20 @@ function quizEnd() {
     var playerInitials = prompt("Please enter your initials");
     var storage = {
         playerInitials: playerInitials,
-        score: timeLeft,
+        timeLeft: timeLeft,
     }
     var storageArray = [];
 
     var storedPlayers = JSON.parse(localStorage.getItem("storageArray"));
 
     if (storedPlayers === null) {
-        storageArray = storageArray.push(storage);
+        // storageArray = storageArray.push(storage);
         localStorage.setItem("storageArray", JSON.stringify(storageArray));
     } else {
+        console.log(storage);
+        console.log(storageArray);
         storageArray = storedPlayers;
-        storageArray = storageArray.push(storage);
+        // storageArray = storageArray.push(storage);
         localStorage.setItem("storageArray", JSON.stringify(storageArray));
     }
 
@@ -93,21 +95,16 @@ function renderQ() {
 function askQ() {
     renderQ();
     questionsCard.textContent = questionsAndAnswers[qIndex].question;
-    // for (var i = 0; i < questionsAndAnswers.length; i++){
-    //     questionsCard.textContent = questionsAndAnswers[i].question;
-    // };
-
 }
-
 
 //check for the correct answer//
 function valueCheck(event) {
     var userChoice = event.target.getAttribute("value");
     if (userChoice == questionsAndAnswers[qIndex].answer) {
-        console.log("yo facts!");
+        console.log("Nice work!");
     }
     else {
-        console.log("I'm taking your time!");
+        console.log("10 seconds deducted!");
         secondsLeft -= 10;
     }
     qIndex++;
