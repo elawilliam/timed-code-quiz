@@ -58,30 +58,19 @@ function startClock() {
 //Function to end quiz//
 function quizEnd() {
     var timeLeft = secondsLeft;
-    timeLeft;
     introCard.textContent = "Your Score";
     questionsCard.textContent = secondsLeft;
     secondsLeft = 62;
     var playerInitials = prompt("Please enter your initials");
-    var storage = {
+    var currentPlayer = {
         playerInitials: playerInitials,
         timeLeft: timeLeft,
     }
-    var storageArray = [];
 
-    var storedPlayers = JSON.parse(localStorage.getItem("storageArray"));
+    var playerScores = JSON.parse(localStorage.getItem("playerScores")) || [];
 
-    if (storedPlayers === null) {
-        // storageArray = storageArray.push(storage);
-        localStorage.setItem("storageArray", JSON.stringify(storageArray));
-    } else {
-        console.log(storage);
-        console.log(storageArray);
-        storageArray = storedPlayers;
-        // storageArray = storageArray.push(storage);
-        localStorage.setItem("storageArray", JSON.stringify(storageArray));
-    }
-
+    playerScores.push(currentPlayer);
+    localStorage.setItem("playerScores", JSON.stringify(playerScores));
 }
 
 //Function to render Q & set up format//
